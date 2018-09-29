@@ -12,11 +12,13 @@ canvas {
 <body onload="startGame()">
 <script>
 
+//Creating the obstacles
+
 var myGamePiece;
 var myObstacle;
 
 function startGame() {
-    myGamePiece = new component(130, 130, "green", 10, 120);
+    myGamePiece = new component(130, 130, "green", 500, 500);
     myObstacle  = new component(130, 130, "red", 300, 120);    
     myGameArea.start();
 }
@@ -76,25 +78,32 @@ function component(width, height, color, x, y) {
     }
 }
 
+function m(e){
+			var bx = document.getElementById("box");
+			bx.style.left = e.pageX;
+			bx.style.top = e.pageY;
+		}
+
+
+
 function updateGameArea() {
     if (myGamePiece.crashWith(myObstacle)) {
         myGameArea.stop();
     } else {
         myGameArea.clear();
+       
         if (myGameArea.x && myGameArea.y) {
         myGamePiece.x = myGameArea.x;
         myGamePiece.y = myGameArea.y;
-    }
-        myObstacle.x -= 5;        
+    } 
         myObstacle.update();
         myGamePiece.newPos();    
         myGamePiece.update();
     }
 }
 
-
 </script>
 
-<p>Avoid hitting the obstacle, or else the game will stop.</p>
+<p>By Talvin Jacobs</p>
 </body>
 </html>
