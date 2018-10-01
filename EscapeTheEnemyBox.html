@@ -6,7 +6,7 @@
         <center><h1>Escape the Enemy Box!</h1><center>
 		
         <canvas id="playArea" width=1420 height=799></canvas>
-        <div id="lifeCounter" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
+        <div id="lives" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
         <button onclick="startOver()">Restart Game?</button>
         <script>
 		
@@ -16,7 +16,7 @@
             var playerPiece;
             var enemyPiece;
             var playerLives = 4;
-            var lifeCounter = document.getElementById("lifeCounter");
+            var lives = document.getElementById("lives");
             var displayX = document.getElementById("displayX");
             var displayY = document.getElementById("displayY");
             var displayTheta = document.getElementById("displayTheta");
@@ -25,6 +25,7 @@
                 playerPiece = new gamePiece(70, 70, "#55822B", 1000, 500);
                 enemyPiece = new gamePiece(70, 70, " #C70039", 240, 115);
             }
+
             function resetGame() {
                 gameSpace.clear();
                 playerPiece.x = 1000;
@@ -35,6 +36,7 @@
                 enemyPiece.update();
                 setTimeout(updateGame,450);
             }
+
             var gameSpace = {
                 canvas : document.createElement("canvas"),
                 start : function() {
@@ -54,6 +56,7 @@
                 },
                 clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}
             }
+
             function gamePiece(width, height, color, x, y) {
                 this.width = width;
                 this.height = height;
@@ -66,6 +69,7 @@
                     this.relX = this.width/2+this.x;
                     this.relY = this.height/2+this.y;
                 }
+
                 this.crashWith = function(otherobj) {
                     var myleft = this.x;
                     var myright = this.x + (this.width);
@@ -82,10 +86,12 @@
                         (myleft > otherright)) {
                             crash = false;
                     }
+
                     return crash;
                 }
                 
             }
+
             var enemySpeed = 6;
             var currentFrame = 0;
             var delta = 0;
@@ -95,11 +101,12 @@
                     window.cancelAnimationFrame(currentFrame);
                     playerLives -= 1;
                     if (playerLives <= 0) {
-                        lifeCounter.innerHTML = "Game Over :(";
+                        lives.innerHTML = "Game Over :(";
                     } else {
-                        lifeCounter.innerHTML = playerLives + " lives remaining";
+                        lives.innerHTML = playerLives + " lives remaining";
                         resetGame();
                     }
+
                 } else {
                     gameSpace.clear();
                     if (gameSpace.plrX && gameSpace.plrY) {
@@ -119,7 +126,7 @@
 			
             function startOver() {
                 playerLives = 3;
-                lifeCounter.innerHTML = playerLives + " lives remaining";
+                lives.innerHTML = playerLives + " lives remaining";
                 resetGame();
             }
 
