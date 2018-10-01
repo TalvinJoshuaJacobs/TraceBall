@@ -1,0 +1,143 @@
+<html> 
+<head>
+	<title>Escape The Enemy Box!</title>
+</head>
+    <body onload="startGame()">
+        <center><h1>Escape the Enemy Box!</h1><center>
+		
+        <canvas id="playArea" width=1420 height=799"></canvas>
+        <div id="lifeCounter" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
+        <button onclick="startOver()">Restart Game?</button>
+        <script>
+		
+// @w3schools.com <3
+// @EricVasile <3      
+
+            var playerPiece;
+            var enemyPiece;
+            var playerLives = 4;
+            var lifeCounter = document.getElementById("lifeCounter");
+            var displayX = document.getElementById("displayX");
+            var displayY = document.getElementById("displayY");
+            var displayTheta = document.getElementById("displayTheta");
+            function startGame() {
+                gameSpace.start();
+                playerPiece = new gamePiece(70, 70, "#55822B", 1000, 500);
+                enemyPiece = new gamePiece(70, 70, " #C70039", 240, 115);
+            }
+            function resetGame() {
+                gameSpace.clear();
+                playerPiece.x = 1000;
+                playerPiece.y = 500;
+                enemyPiece.x = 240;
+                enemyPiece.y = 115;
+                playerPiece.update();
+                enemyPiece.update();
+                setTimeout(updateGame,450);
+            }
+            var gameSpace = {
+                canvas : document.createElement("canvas"),
+                start : function() {
+                    var oldCanvas = document.getElementById("playArea");
+                    this.canvas.width = oldCanvas.width;
+                    this.canvas.height = oldCanvas.height;
+                    this.canvas.style = "border:20px solid #000000";
+					this.canvas.style = "background-color: #D5D5D5";
+                    this.context = this.canvas.getContext("2d");
+                    oldCanvas.parentNode.replaceChild(this.canvas, oldCanvas);
+                    window.requestAnimationFrame(updateGame);
+					this.canvas.style.cursor = "none";
+                    this.canvas.addEventListener('mousemove', function (e) {
+                        gameSpace.plrX = e.offsetX;
+                        gameSpace.plrY = e.offsetY;
+                    })
+                },
+                clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}
+            }
+            function gamePiece(width, height, color, x, y) {
+                this.width = width;
+                this.height = height;
+                this.x = x;
+                this.y = y;
+                this.update = function() {
+                    ctx = gameSpace.context;
+                    ctx.fillStyle = color;
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                    this.relX = this.width/2+this.x;
+                    this.relY = this.height/2+this.y;
+                }
+                this.crashWith = function(otherobj) {
+                    var myleft = this.x;
+                    var myright = this.x + (this.width);
+                    var mytop = this.y;
+                    var mybottom = this.y + (this.height);
+                    var otherleft = otherobj.x;
+                    var otherright = otherobj.x + (otherobj.width);
+                    var othertop = otherobj.y;
+                    var otherbottom = otherobj.y + (otherobj.height);
+                    var crash = true;
+                    if ((mybottom < othertop) ||
+                        (mytop > otherbottom) ||
+                        (myright < otherleft) ||
+                        (myleft > otherright)) {
+                            crash = false;
+                    }
+                    return crash;
+                }
+                
+            }
+            var enemySpeed = 6;
+            var currentFrame = 0;
+            var delta = 0;
+            var lastFrame = 0;
+            function updateGame() {
+                if (enemyPiece.crashWith(playerPiece)) {
+                    window.cancelAnimationFrame(currentFrame);
+                    playerLives -= 1;
+                    if (playerLives <= 0) {
+                        lifeCounter.innerHTML = "Game Over :(";
+                    } else {
+                        lifeCounter.innerHTML = playerLives + " lives remaining";
+                        resetGame();
+                    }
+                } else {
+                    gameSpace.clear();
+                    if (gameSpace.plrX && gameSpace.plrY) {
+                        playerPiece.x = gameSpace.plrX-(playerPiece.width/2);
+                        playerPiece.y = gameSpace.plrY-(playerPiece.height/2);    
+                    }
+                    newEnemyCoords = calcNewCoords(enemyPiece,playerPiece,currentFrame);
+                    enemyPiece.x += newEnemyCoords.x;
+                    enemyPiece.y += newEnemyCoords.y;
+                    
+                    playerPiece.update();
+                    enemyPiece.update();
+                    currentFrame = window.requestAnimationFrame(updateGame);
+                }
+                
+            }
+			
+            function startOver() {
+                playerLives = 3;
+                lifeCounter.innerHTML = playerLives + " lives remaining";
+                resetGame();
+            }
+
+            function calcNewCoords(startObj,destinationObj,currentFrame) {
+                var dx = destinationObj.relX - startObj.relX;
+                var dy = destinationObj.relY - startObj.relY;
+                var length = Math.sqrt(dx * dx + dy * dy);
+                if (length) {
+                    dx /= length;
+                    dy /= length;
+                }
+                delta = currentFrame - lastFrame;
+                lastFrame = currentFrame;
+                var x = dx * delta * enemySpeed;
+                var y = dy * delta * enemySpeed;
+                return {x,y};
+            }
+			
+        </script>
+    </body>
+</html>
