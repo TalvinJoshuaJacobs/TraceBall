@@ -1,4 +1,4 @@
-<html>
+<html> 
 <head>
 	<title>Escape The Enemy Box!</title>
 </head>
@@ -9,7 +9,10 @@
         <div id="lifeCounter" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
         <button onclick="startOver()">Restart Game?</button>
         <script>
-        
+		
+// @w3schools.com <3
+// @EricVasile <3      
+
             var playerPiece;
             var enemyPiece;
             var playerLives = 4;
