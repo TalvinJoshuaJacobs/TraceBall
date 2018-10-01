@@ -17,9 +17,6 @@
             var Enemy;
             var PlayerLives = 4;
             var Lives = document.getElementById("Lives");
-            var displayX = document.getElementById("displayX");
-            var displayY = document.getElementById("displayY");
-            var displayTheta = document.getElementById("displayTheta");
 
             function startGame() {
                 gameSpace.start();
@@ -41,13 +38,13 @@
             var gameSpace = {
                 canvas : document.createElement("canvas"),
                 start : function() {
-                    var oldCanvas = document.getElementById("playArea");
-                    this.canvas.width = oldCanvas.width;
-                    this.canvas.height = oldCanvas.height;
+                    var TheCanvas = document.getElementById("playArea");
+                    this.canvas.width = TheCanvas.width;
+                    this.canvas.height = TheCanvas.height;
                     this.canvas.style = "border:20px solid #000000";
 		    this.canvas.style = "background-color: #D5D5D5";
                     this.context = this.canvas.getContext("2d");
-                    oldCanvas.parentNode.replaceChild(this.canvas, oldCanvas);
+                    TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
                     window.requestAnimationFrame(updateGame);
 		    this.canvas.style.cursor = "none";
                     this.canvas.addEventListener('mousemove', function (e) {
@@ -96,12 +93,12 @@
 
             var enemySpeed = 6;
             var currentFrame = 0;
-            var delta = 0;
+            var Hypotenuse = 0;
             var lastFrame = 0;
             function updateGame() {
                 if (Enemy.crashWith(Gamer)) {
                     window.cancelAnimationFrame(currentFrame);
-                    PlayerLives -= 1;
+                    PlayerLives += -1;
                     if (PlayerLives <= 0) {
                         Lives.innerHTML = "Game Over :(";
                     } 
@@ -144,10 +141,10 @@
                     dy /= length;
                 }
 
-                delta = currentFrame - lastFrame;
+                Hypotenuse = currentFrame - lastFrame;
                 lastFrame = currentFrame;
-                var x = dx * delta * enemySpeed;
-                var y = dy * delta * enemySpeed;
+                var x = dx * Hypotenuse * enemySpeed;
+                var y = dy * Hypotenuse * enemySpeed;
                 return {x,y};
             }
 
