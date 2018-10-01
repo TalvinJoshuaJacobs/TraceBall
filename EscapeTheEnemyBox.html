@@ -2,40 +2,39 @@
 <html>
  
 <head>
-	<title>Escape The Enemy Box!</title>
+    <title>Escape The Enemy Box!</title>
 </head>
 
     <body onload="startGame()">
         <center><h1>Escape the Enemy Box!</h1><center>
 		
         <canvas id="playArea" width=1420 height=799></canvas>
-        <div id="lives" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
+        <div id="Lives" style="margin-top: 15px; font-size: 30px">3 lives remaining.</div>
         <button onclick="startOver()">Restart Game?</button>
 
         <script>
-
-            var playerPiece;
-            var enemyPiece;
-            var playerLives = 4;
-            var lives = document.getElementById("lives");
+            var Gamer;
+            var Enemy;
+            var PlayerLives = 4;
+            var Lives = document.getElementById("Lives");
             var displayX = document.getElementById("displayX");
             var displayY = document.getElementById("displayY");
             var displayTheta = document.getElementById("displayTheta");
 
             function startGame() {
                 gameSpace.start();
-                playerPiece = new gamePiece(70, 70, "#55822B", 1000, 500);
-                enemyPiece = new gamePiece(70, 70, " #C70039", 240, 115);
+                Gamer = new gamePiece(70, 70, "#55822B", 1000, 500);
+                Enemy = new gamePiece(70, 70, " #C70039", 240, 115);
             }
 
             function resetGame() {
                 gameSpace.clear();
-                playerPiece.x = 1000;
-                playerPiece.y = 500;
-                enemyPiece.x = 240;
-                enemyPiece.y = 115;
-                playerPiece.update();
-                enemyPiece.update();
+                Gamer.x = 1000;
+                Gamer.y = 500;
+                Enemy.x = 240;
+                Enemy.y = 115;
+                Gamer.update();
+                Enemy.update();
                 setTimeout(updateGame,450);
             }
 
@@ -100,14 +99,14 @@
             var delta = 0;
             var lastFrame = 0;
             function updateGame() {
-                if (enemyPiece.crashWith(playerPiece)) {
+                if (Enemy.crashWith(Gamer)) {
                     window.cancelAnimationFrame(currentFrame);
-                    playerLives -= 1;
-                    if (playerLives <= 0) {
-                        lives.innerHTML = "Game Over :(";
+                    PlayerLives -= 1;
+                    if (PlayerLives <= 0) {
+                        Lives.innerHTML = "Game Over :(";
                     } 
 		    else {
-                        lives.innerHTML = playerLives + " lives remaining";
+                        Lives.innerHTML = PlayerLives + " lives remaining";
                         resetGame();
                     }
 
@@ -116,23 +115,23 @@
 		else {
                     gameSpace.clear();
                     if (gameSpace.plrX && gameSpace.plrY) {
-                        playerPiece.x = gameSpace.plrX-(playerPiece.width/2);
-                        playerPiece.y = gameSpace.plrY-(playerPiece.height/2);    
+                        Gamer.x = gameSpace.plrX-(Gamer.width/2);
+                        Gamer.y = gameSpace.plrY-(Gamer.height/2);    
                     }
-                    newEnemyCoords = calcNewCoords(enemyPiece,playerPiece,currentFrame);
-                    enemyPiece.x += newEnemyCoords.x;
-                    enemyPiece.y += newEnemyCoords.y;
+                    newEnemyCoords = calcNewCoords(Enemy,Gamer,currentFrame);
+                    Enemy.x += newEnemyCoords.x;
+                    Enemy.y += newEnemyCoords.y;
                     
-                    playerPiece.update();
-                    enemyPiece.update();
+                    Gamer.update();
+                    Enemy.update();
                     currentFrame = window.requestAnimationFrame(updateGame);
                 }
                 
             }
 			
             function startOver() {
-                playerLives = 3;
-                lives.innerHTML = playerLives + " lives remaining";
+                PlayerLives = 3;
+                Lives.innerHTML = PlayerLives + " lives remaining";
                 resetGame();
             }
 
@@ -152,10 +151,10 @@
                 return {x,y};
             }
 
-// @w3schools.com <3
-// @EricVasile <3      
-
-			
+// @w3schools.com <3 (Helped me with the basic operations and structure of this code)
+// @EricVasile <3 (Helped me with the Math functions, the player lives, and the restart button functionality)
         </script>
+
     </body>
+
 </html>
