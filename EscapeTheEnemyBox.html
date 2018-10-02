@@ -2,7 +2,7 @@
 <html>
  
 <head>
-    <title>Escape The Enemy Box!</title>
+    <title>Escape The Enemy Box!</title> 
 </head>
 
     <body onload="Start()">
@@ -12,6 +12,8 @@
         <div id="Lives" style="margin-top: 15px; font-size: 30px">3 lives remaining</div>
 
         <script>
+		
+			//Declaring the piece variables and setting them up
 		
             var Gamer;
             var Enemy;
@@ -23,6 +25,8 @@
                 Gamer = new Entity(70, 70, "#55822B", 1000, 500);
                 Enemy = new Entity(70, 70, " #C70039", 240, 115);
             }
+			
+			//Setting the starting positions for each element
 
             function Restart() {
                 GameArea.clear();
@@ -34,6 +38,8 @@
                 Enemy.update();
                 setTimeout(updateGame,450);
             }
+			
+			//Setting the canvas up
 
             var GameArea = {
                 canvas : document.createElement("canvas"),
@@ -46,7 +52,10 @@
                     this.context = this.canvas.getContext("2d");
                     TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
                     window.requestAnimationFrame(updateGame);
-					this.canvas.style.cursor = "none";
+					
+					//Hooking up the mouse to the program (addEventListener)
+					
+					this.canvas.style.cursor = "none"; //Hides the mouse
                     this.canvas.addEventListener('mousemove', function (e) {
                         GameArea.plrX = e.offsetX;
                         GameArea.plrY = e.offsetY;
@@ -55,8 +64,11 @@
                 },
 
         clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}
+		
             }
 
+			//Setting up the maths
+			
             function Entity(width, height, color, x, y) {
                 this.width = width;
                 this.height = height;
@@ -70,6 +82,8 @@
                     this.relY = this.height/2+this.y;
                 }
 
+				//Setting up the crash rule
+				
                 this.crashWith = function(otherobj) {
                     var myleft = this.x;
                     var myright = this.x + (this.width);
@@ -90,6 +104,8 @@
                 }
                 
             }
+			
+			//Setting up the Enemy's "AI"
 
             var EnemySpeed = 6.85;
             var ThisFrame = 0;
@@ -98,16 +114,18 @@
             function updateGame() {
                 if (Enemy.crashWith(Gamer)) {
                     window.cancelAnimationFrame(ThisFrame);
-                    PlayerLives += -1;
+                    PlayerLives += -1; //Player loses life if crash = true
                     if (PlayerLives <= 0) {
                         Lives.innerHTML = "Game Over :(";
                     } 
 					else {
-                        Lives.innerHTML = PlayerLives + " lives remaining";
-                        Restart();
+                        Lives.innerHTML = PlayerLives + " lives remaining"; //Displays the number of lives on the page
+                        Restart(); 
                     }
 
                 } 
+				
+				//Setting up the coordinate system
 
 				else {
                     GameArea.clear();
@@ -121,10 +139,12 @@
                     
                     Gamer.update();
                     Enemy.update();
-                    ThisFrame = window.requestAnimationFrame(updateGame);
+                    ThisFrame = window.requestAnimationFrame(updateGame); //Ensures my game isn't a rip-off of MS Paint
                 }
                 
             }
+			
+			//Setting up Pythagoras' theorem to work out the shortest distance between the Gamer (you) and the Enemy
 			
             function GetNewCoords(startObj,destinationObj,ThisFrame) {
                 var dx = destinationObj.relX - startObj.relX;
@@ -142,8 +162,11 @@
                 return {x,y};
             }
 
+// HALL OF FAME:
+//
 // @w3schools.com <3 (Helped me with the basic operations and structure of this code)
 // @EricVasile <3 (Helped me with the Math functions and player Lives)
+// @ManishGadhviWHC <3 (My programming tutor)
 
         </script>
 
