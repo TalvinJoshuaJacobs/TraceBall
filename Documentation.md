@@ -88,9 +88,14 @@ This chart shows the completion of each individual 'chunk' of code over time. (T
 
 ##### Flowchart
 
-Flowchart showing how the program will work
+![My flowchart](http://i.imgur.com/cT43un3.jpg)
 
 ##### Functions
 
-Descriptions of functions given on flowchart
-
+ - "Get the player to control the box using the mouse":  Using `this.canvas.addEventListener('mousemove', function (e) {` , the player's mouse movement is recorded and the player's box element is placed exactly where the cursor is.
+ - "The user has 3 lives":  This is a rule that is implemented as a functional requirement.
+ - "Get the co-ordinates of the player's mouse for each frame": The user's cursor position will be constantly moving to a different position on the canvas. This needs to be tracked, for use of the enemy AI.
+ - "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates": The shortest "line" between two points can be calculated by using Pythagoras' theorem: a^2 + b^2 = c^2. This is the invisible line that the enemy will always traverse when chasing the player. (It's the most efficient way for the enemy to do so).
+ - "Continue until the player DOES touch the enemy": If the enemy's box hasn't yet touched the player's box, the game can still continue until it happens. It must happen as the game cannot go on forever! (Humans don't live forever)
+ - "Deduct 1 life": This occurs when the player has touched the enemy box, AND has more than 1 life left. 
+ - "Pause for 450 milliseconds": This is to give the player a little break and to clarify that the next "round" will begin after the pause.  `setTimeout(updateGame,450);`
