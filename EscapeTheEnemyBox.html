@@ -13,7 +13,7 @@
 
         <script>
 		
-			//Declaring the piece variables and setting them up
+	    //Declaring the piece variables and setting them up
 		
             var Gamer;
             var Enemy;
@@ -26,7 +26,7 @@
                 Enemy = new Entity(70, 70, " #C70039", 240, 115);
             }
 			
-			//Setting the starting positions for each element
+	    //Setting the starting positions for each element
 
             function Restart() {
                 GameArea.clear();
@@ -39,7 +39,7 @@
                 setTimeout(updateGame,450);
             }
 			
-			//Setting the canvas up
+	    //Setting the canvas up
 
             var GameArea = {
                 canvas : document.createElement("canvas"),
@@ -53,9 +53,9 @@
                     TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
                     window.requestAnimationFrame(updateGame);
 					
-					//Hooking up the mouse to the program (addEventListener)
+		    //Hooking up the mouse to the program (addEventListener)
 					
-					this.canvas.style.cursor = "none"; //Hides the mouse
+		    this.canvas.style.cursor = "none"; //Hides the mouse
                     this.canvas.addEventListener('mousemove', function (e) {
                         GameArea.plrX = e.offsetX;
                         GameArea.plrY = e.offsetY;
@@ -63,11 +63,11 @@
 
                 },
 
-        clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}
+            clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}
 		
             }
 
-			//Setting up the maths
+	    //Setting up the maths
 			
             function Entity(width, height, color, x, y) {
                 this.width = width;
@@ -82,7 +82,7 @@
                     this.relY = this.height/2+this.y;
                 }
 
-				//Setting up the crash rule
+		//Setting up the crash rule
 				
                 this.crashWith = function(otherobj) {
                     var myleft = this.x;
@@ -105,7 +105,7 @@
                 
             }
 			
-			//Setting up the Enemy's "AI"
+	    //Setting up the Enemy's "AI"
 
             var EnemySpeed = 6.85;
             var ThisFrame = 0;
@@ -125,7 +125,7 @@
 
                 } 
 				
-				//Setting up the coordinate system
+		    //Setting up the coordinate system
 
 				else {
                     GameArea.clear();
@@ -144,7 +144,7 @@
                 
             }
 			
-			//Setting up Pythagoras' theorem to work out the shortest distance between the Gamer (you) and the Enemy
+	    //Setting up Pythagoras' theorem to work out the shortest distance between the Gamer (you) and the Enemy
 			
             function GetNewCoords(startObj,destinationObj,ThisFrame) {
                 var dx = destinationObj.relX - startObj.relX;
