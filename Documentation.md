@@ -1,62 +1,90 @@
 ### I. Initiative
-Overview of the project itself
+Set inside a browser window, the user controls a small box connected to the mouse and has to escape (not have his box touched by) an enemy box controlled by an AI. The user has three lives (a life is lost once the enemy box touches the users box) and their objective is to last as long as they can.
 
 ### II. Epics and User Stories
 
 ##### Epics
-Outlining the main fuctions of the game
+
+ - The game is coded in Javascript and HTML and on Notepad only
+ - The user has to control his box by using the mouse only
+ - The enemy is controlled by an AI which uses math functions (trigonometry) to work out the player's position
+ - The game takes place inside a canvas 
+ - The user has three lives. They lose a life if the enemy box touches the user's box. If they lose all of their lives,       the user loses the game
+
 
 ##### Non-Functional Requirements
-Asthetic or non essential requirements
+
+ - The user controls a green box 
+ - The enemy AI controls a red box
+ - The boxes are of the same size
+ - The speed of the enemy AI is balanced (so the game isn't too difficult, but also not too easy)
+ - The number of lives is displayed below the canvas
+ - The title of the game is displayed above the canvas in a clear, bold font
 
 ##### User Stories
-Written in the format: 
-
-As a player, I would _____
-
+"As a player,  I would love to be able to see my score displayed somewhere on the screen, to give me an incentive to continue trying to survive."
+"It would be nice to have difficulty levels to chose from, so that I can play against a slower or faster AI."
 
 
 ##### How We Addressed The Requirements
 
-How will your planned product meet the user requirements
+My planned product would implement a score function and a difficulty setting.
 
 ### III. Genre
+Simple 2D browser game
 
 ### IV. Technical Details
 
 ##### Platform
-
+HTML Browser platform
 
 ##### Programming Language/Enviroment
-
+Javascript and HTML
 
 ##### Programming Challenges
-State the programing challenges you are trying to overcome
- 
+I had to overcome numerous challenges:
+
+ - Not having any previous experience or knowledge with Javascript
+ - Working with Notepad (Default windows text editor application, which isn't a feature-rich IDE)
+ - Having to code the Enemy AI (working out which way was best to code it)
+ - Making the game appear more tidy (visually)
+ - Implementing the '3 lives' rule 
+ - Coding the crash rule (Making sure the game stops and a life is lost when the user's box touches the enemy box)
+
 ##### Constructing And Implementing My Code
 
-Think of this as the method. How will you go about building your program?
+To begin, I went to https://www.w3schools.com/graphics/game_intro.asp and learned the basics of Javascript and how it functions. I then looked at the example game and learnt what each part of the code was responsible for (By going through the code, deleting some lines, and comparing it with the full final result).
+Then, I navigated to the sections of the website which highlighted the different functions of the game and wrote my code with that as a reference.
+Each 'chunk' of my code was written by referring to different parts of the w3schools website.
+I then hit a brick wall. I wasn't able to code the 'Enemy AI' to get it to chase the user's box. I spent a few days trying to figure out how to code it, and ended up referring to a classmate's (Eric Vasile) piece of code to get it completed.
 
 ##### Algorithms
 
-Explanation of the algorithms behind your program
+The algorithm found in my code is responsible for the Enemy AI, getting it to chase the user's box in the most efficient way possible. This was done by getting the Enemy to do 2 things: 1) Calculate the shortest distance between it and the user, and 2) Follow that path linearly, at a constant speed. To get it to calculate this 'shortest distance', I've implemented Pythagoras' theorem using the Math function and the coordinates of the user's mouse. 
  
 ##### Coding Standards 
-Standard for the code you will be writting 
+I've stuck to the following when writing the code:
+
+ - The variable names and cases are consistent
+ - The spacing, indentation, comments and brackets are consistent
+ - The code is readable
+
+I've stuck to placing the opening bracket on the same line as the object name, and also made sure each line generally wasn't longer than 100 characters.
 
 ### V. Research
+I used https://www.w3schools.com for my research before completing this task.
 
 ### VI. Project Management
 
 ##### Burndown Chart
 
-![Example Burndown Chart](https://upload.wikimedia.org/wikipedia/commons/8/8e/SampleBurndownChart.svg)
+![My Burndown Chart](http://i.imgur.com/wQpg17yg.jpg)
 
-Chart showing the completion of user stories over time
+This chart shows the completion of each individual 'chunk' of code over time. (This chart shows that I was slightly behind schedule for the majority of the task)
 
 ##### User Stories Tracking Chart (Which Stories Have Been Completed)
 
-Table showing user stories with weighting, due date and completion state
+(I haven't been able to implement the user stories as of yet)
 
 ##### Flowchart
 
@@ -65,3 +93,4 @@ Flowchart showing how the program will work
 ##### Functions
 
 Descriptions of functions given on flowchart
+
