@@ -107,7 +107,7 @@
 			
 	    //Setting up the Enemy's "AI"
 
-            var EnemySpeed = 6.85;
+            
             var ThisFrame = 0;
             var Hypotenuse = 0;
             var EndFrame = 0;
@@ -127,7 +127,7 @@
 				
 		    //Setting up the coordinate system
 
-				else {
+		else {
                     GameArea.clear();
                     if (GameArea.plrX && GameArea.plrY) {
                         Gamer.x = GameArea.plrX-(Gamer.width/2);
@@ -157,8 +157,8 @@
 
                 Hypotenuse = ThisFrame - EndFrame;
                 EndFrame = ThisFrame;
-                var x = dx * Hypotenuse * EnemySpeed;
-                var y = dy * Hypotenuse * EnemySpeed;
+                var x = dx * Hypotenuse * 6.85;
+                var y = dy * Hypotenuse * 6.85;
                 return {x,y};
             }
 
