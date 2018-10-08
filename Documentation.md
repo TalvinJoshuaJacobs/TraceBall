@@ -80,7 +80,7 @@ I used https://www.w3schools.com for my research before completing this task.
 
 ![My Burndown Chart](http://i.imgur.com/wQpg17yg.jpg)
 
-This chart shows the completion of each individual 'chunk' of code over time. (This chart shows that I was slightly behind schedule for the majority of the task)
+This chart shows the completion of each individual 'chunk' of code over time. (This chart shows that I was slightly ahead of schedule for the majority of the task)
 
 ##### User Stories Tracking Chart (Which Stories Have Been Completed)
 
