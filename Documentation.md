@@ -1,3 +1,4 @@
+
 ### I. Initiative
 Set inside a browser window, the user controls a small box connected to the mouse and has to escape (not have his box touched by) an enemy box controlled by an AI. The user has three lives (a life is lost once the enemy box touches the users box) and their objective is to last as long as they can.
 
@@ -22,13 +23,15 @@ Set inside a browser window, the user controls a small box connected to the mous
  - The title of the game is displayed above the canvas in a clear, bold font
 
 ##### User Stories
-"As a player,  I would love to be able to see my score displayed somewhere on the screen, to give me an incentive to continue trying to survive."
-"It would be nice to have difficulty levels to chose from, so that I can play against a slower or faster AI."
+
+"As a player,  I would like the enemy AI to follow my box more smoothly, for a better and more enjoyable gaming experience."
+"It would be nice for the canvas to appear in the middle of the page, where my eyes would normally rest."
+"As a player, I would love to see how many lives I have left during gameplay."
 
 
 ##### How We Addressed The Requirements
 
-My planned product would implement a score function and a difficulty setting.
+My game has had a life-score and a smoother AI implemented, as well as a nicer, more pleasant looking canvas.
 
 ### III. Genre
 Simple 2D browser game
@@ -84,8 +87,7 @@ This chart shows the completion of each individual 'chunk' of code over time. (T
 
 ##### User Stories Tracking Chart (Which Stories Have Been Completed)
 
-(I haven't been able to implement the user stories as of yet)
-
+![enter image description here](https://i.imgur.com/kEawMv3.jpg)
 ##### Flowchart
 
 ![My flowchart](http://i.imgur.com/cT43un3.jpg)
