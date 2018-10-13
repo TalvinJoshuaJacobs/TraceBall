@@ -67,7 +67,7 @@
 		
             }
 
-	    //Setting up the maths
+	    //Setting up the the co-ordinate system
 			
             function Entity(width, height, color, x, y) {
                 this.width = width;
@@ -104,10 +104,7 @@
                 }
                 
             }
-			
-	    //Setting up the Enemy's "AI"
-
-            
+				              
             var ThisFrame = 0;
             var Hypotenuse = 0;
             var EndFrame = 0;
@@ -154,6 +151,8 @@
                     dx /= Distance;
                     dy /= Distance;
                 }
+	
+	    //Enemy AI	    
 
                 Hypotenuse = ThisFrame - EndFrame;
                 EndFrame = ThisFrame;
@@ -163,7 +162,7 @@
             }
 
 // HALL OF FAME:
-//
+
 // @w3schools.com <3 (Helped me with the basic operations and structure of this code)
 // @EricVasile <3 (Helped me with the Math functions and player Lives)
 // @ManishGadhviWHC <3 (My programming tutor)
