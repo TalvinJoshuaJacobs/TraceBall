@@ -97,7 +97,58 @@ This chart shows the completion of each individual 'chunk' of code over time. (T
  - "Get the player to control the box using the mouse":  Using `this.canvas.addEventListener('mousemove', function (e) {` , the player's mouse movement is recorded and the player's box element is placed exactly where the cursor is.
  - "The user has 3 lives":  This is a rule that is implemented as a functional requirement.
  - "Get the co-ordinates of the player's mouse for each frame": The user's cursor position will be constantly moving to a different position on the canvas. This needs to be tracked, for use of the enemy AI.
- - "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates": The shortest "line" between two points can be calculated by using Pythagoras' theorem: a^2 + b^2 = c^2. This is the invisible line that the enemy will always traverse when chasing the player. (It's the most efficient way for the enemy to do so).
+ - "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates": The shortest "line" between two points can be calculated by using Pythagoras' theorem (a^2 + b^2 = c^2). This is the invisible line that the enemy will always traverse when chasing the player. (It's the most efficient way for the enemy to do so).
  - "Continue until the player DOES touch the enemy": If the enemy's box hasn't yet touched the player's box, the game can still continue until it happens. It must happen as the game cannot go on forever! (Humans don't live forever)
  - "Deduct 1 life": This occurs when the player has touched the enemy box, AND has more than 1 life left. 
  - "Pause for 450 milliseconds": This is to give the player a little break and to clarify that the next "round" will begin after the pause.  `setTimeout(updateGame,450);`
+ 
+##### Flowchart -> Code
+
+> "Display the player's box, the enemy's box and the canvas"
+
+    var GameArea = { 						//Displays Canvas
+	    canvas : document.createElement("canvas"),
+	    start : function() {
+		    var TheCanvas = document.getElementById("Space");
+		    this.canvas.width = TheCanvas.width;
+		    this.canvas.height = TheCanvas.height;
+		    this.canvas.style = "border:20px solid #000000";
+		    this.canvas.style = "background-color: #D5D5D5";
+		    this.context = this.canvas.getContext("2d");
+		    TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
+		    window.requestAnimationFrame(updateGame);
+		    
+    var Gamer;							//Created the Player
+    var Enemy;							//Created the Enemy
+    
+    function Start() {
+    GameArea.start();
+	    Gamer = new Entity(70, 70, "#55822B", 1000, 500);		//Player's attributes
+	    Enemy = new Entity(70, 70, " #C70039", 240, 115);		//Enemy's attributes
+    }
+
+> Get the player to control the box using mouse
+
+    this.canvas.style.cursor = "none"; 				//Hides the mouse
+    this.canvas.addEventListener('mousemove', function (e) { 	//Getting mouse movement
+	    GameArea.plrX = e.offsetX;
+	    GameArea.plrY = e.offsetY;
+	    })
+    },
+
+> The user has 3 lives
+
+    var PlayerLives = 4;						//Starting number
+    var Lives = document.getElementById("Lives");
+    
+    function updateGame() {
+	    if (Enemy.crashWith(Gamer)) {
+		    window.cancelAnimationFrame(ThisFrame);
+		    PlayerLives += -1; 					//Player loses life if crash = true
+		    if (PlayerLives <= 0) {
+			    Lives.innerHTML = "Game Over :(";
+		    }
+		    else {
+			    Lives.innerHTML = PlayerLives + " lives remaining"; //Displays the number of lives on the page
+			    Restart();
+		    }
