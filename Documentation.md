@@ -152,3 +152,54 @@ This chart shows the completion of each individual 'chunk' of code over time. (T
 			    Lives.innerHTML = PlayerLives + " lives remaining"; //Displays the number of lives on the page
 			    Restart();
 		    }
+
+> Get the co-ordinates of the player's mouse for each frame 
+
+    function Restart() {
+	    GameArea.clear();
+	    Gamer.x = 1000;
+	    Gamer.y = 500;
+    }
+
+
+    function Entity(width, height, color, x, y) {
+	    this.width = width;
+	    this.height = height;
+	    this.x = x;
+	    this.y = y;
+	    this.update = function() {
+		    ctx = GameArea.context;
+		    ctx.fillStyle = color;
+		    ctx.fillRect(this.x, this.y, this.width, this.height);
+		    this.relX = this.width/2+this.x;
+		    this.relY = this.height/2+this.y;
+	    }
+    }
+
+> Calculate the shortest distance between the enemy box and the player's mouse co-ordinates
+
+    function GetNewCoords(startObj,destinationObj,ThisFrame) {
+	    var dx = destinationObj.relX - startObj.relX;
+	    var dy = destinationObj.relY - startObj.relY;
+	    var Distance = Math.sqrt(dx * dx + dy * dy);
+	    if (Distance) {
+		    dx /= Distance;
+		    dy /= Distance;
+	    }
+
+> Get the enemy box to traverse this "shortest distance"
+	  
+    Hypotenuse = ThisFrame - EndFrame;
+    EndFrame = ThisFrame;
+    var x = dx * Hypotenuse * 6.85;
+    var y = dy * Hypotenuse * 6.85;
+    return {x,y};
+    }
+> 
+> Pause for 450 milliseconds
+
+	    Gamer.update();
+	    Enemy.update();
+	    setTimeout(updateGame,450);
+    }
+
