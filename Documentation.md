@@ -1,4 +1,6 @@
+**West Herts College - *HND in Computing (Cyber Security)* ->  *Programming - Assignment 1*** By Talvin Jacobs (2018-2019)
 
+## 'TraceBall'
 
 ### I. Initiative
 Set inside a browser window, the user controls a small box connected to the mouse and has to escape (not have his box touched by) an enemy box controlled by an AI. The user has three lives (a life is lost once the enemy box touches the users box) and their objective is to last as long as they can.
