@@ -1,4 +1,5 @@
 
+
 ### I. Initiative
 Set inside a browser window, the user controls a small box connected to the mouse and has to escape (not have his box touched by) an enemy box controlled by an AI. The user has three lives (a life is lost once the enemy box touches the users box) and their objective is to last as long as they can.
 
@@ -32,6 +33,7 @@ Set inside a browser window, the user controls a small box connected to the mous
 ##### How We Addressed The Requirements
 
 My game has had a life-score and a smoother AI implemented, as well as a nicer, more pleasant looking canvas.
+The life-score function and the smoother AI were both implemented with the help of a fellow student (Eric Vasile). The canvas was completed by myself.
 
 ### III. Genre
 Simple 2D browser game
@@ -73,6 +75,9 @@ I've stuck to the following when writing the code:
  - The code is readable
 
 I've stuck to placing the opening bracket on the same line as the object name, and also made sure each line generally wasn't longer than 100 characters.
+The format of the code on GitHub will look slightly different to when it is pasted in Notepad or an appropriate IDE - The indentation will appear inconsistent, however this doesn't change the structure or affect the functionality of the code.
+
+I have not used camelCase, but instead, stuck to Capitalized variable names. They are all consistent with this case.
 
 ### V. Research
 I used https://www.w3schools.com for my research before completing this task.
