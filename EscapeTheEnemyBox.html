@@ -11,49 +11,66 @@
 	<div id="Lives" style="margin-top: 15px; font-size: 30px">3 lives remaining</div>
 
 <script>
-		
-var Gamer;
-var Enemy;
-var PlayerLives = 4;
-var Lives = document.getElementById("Lives");
-function Start() {
+
+// TraceBall (EscapeTheEnemyBox) is a 2D browser game coded in Javascript. 
+// Set inside a browser window, the player controls a small box connected to the mouse.
+// He/She has to escape (not have his box touched by) an enemy box controlled by an AI. 
+// The player has three lives.
+// A life is lost once the enemy box touches the player's box and their objective is to last as long as they can.
+// By Talvin Jacobs (2018) with some assistance from:
+// w3schools.com and Eric Vasile.
+
+
+// Defining the entity variables
+var Gamer;	// The player
+var Enemy;	// The enemy
+var PlayerLives = 4;	// Number of  Lives the player begins with
+var Lives = document.getElementById("Lives");	// A Document Object Model (DOM) grabber
+
+// A function to start the game
+function Start() {	// 2 entities are created when the game begins:
 	GameArea.start();
-	Gamer = new Entity(70, 70, "#55822B", 1000, 500);
-	Enemy = new Entity(70, 70, " #C70039", 240, 115);
+	Gamer = new Entity(70, 70, "#55822B", 1000, 500);	// The player's box and its characteristics
+	Enemy = new Entity(70, 70, " #C70039", 240, 115);	// The enemy's box and its (similar) characteristics
 }
-			    
-function Restart() {
+
+// A "Restart Game" function.		    
+function Restart() {	// Everytime the player loses a life, the canvas is reset, and the entities return to their starting positions
 	GameArea.clear();
-	Gamer.x = 1000;
-	Gamer.y = 500;
-	Enemy.x = 240;
-	Enemy.y = 115;
+	Gamer.x = 1000;	// The x co-ordinate of the player's starting position
+	Gamer.y = 500;	// The y co-ordinate of the player's starting position
+	Enemy.x = 240;	// The x co-ordinate of the enemy's starting position
+	Enemy.y = 115;	// The y co-ordinate of the enemy's starting position
 	Gamer.update();
 	Enemy.update();
-	setTimeout(updateGame,450);
+	setTimeout(updateGame,450);	// The time delay between the player's death and the start of the new life
 }
-    
-var GameArea = {
-	canvas : document.createElement("canvas"),
+
+// The setting up of the Canvas (Area where the game takes place - The "Map")
+var GameArea = {	// It is set up as a new variable
+	canvas : document.createElement("canvas"),	// The canvas element is created
 	start : function() {
-		var TheCanvas = document.getElementById("Space");
+		var TheCanvas = document.getElementById("Space");	// Another DOM grabber
 		this.canvas.width = TheCanvas.width;
 		this.canvas.height = TheCanvas.height;
-		this.canvas.style = "border:20px solid #000000";
-		this.canvas.style = "background-color: #D5D5D5";
+		this.canvas.style = "border: 20px solid #000000";	// Canvas style and size
+		this.canvas.style = "background-color: #D5D5D5";	// ^
 		this.context = this.canvas.getContext("2d");
-		TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
-		window.requestAnimationFrame(updateGame);						
-		this.canvas.style.cursor = "none"; 
-		this.canvas.addEventListener('mousemove', function (e) {
-			GameArea.plrX = e.offsetX;
-                        GameArea.plrY = e.offsetY;
+		TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);	// Overwriting the canvas info
+		window.requestAnimationFrame(updateGame);	// Creates the animation in Javascript		
+		this.canvas.style.cursor = "none"; 	// Hides the mouse cursor
+		this.canvas.addEventListener('mousemove', function (e) {	// Gets the program to listen out for the mouse co-ordinates
+			GameArea.plrX = e.offsetX;	// Mouse's x co-ordinates
+            GameArea.plrY = e.offsetY;	// Mouse's y co-ordinates
 		})
 	},
-	clear : function(){this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)}		
+	clear : function(){	// A function to clear the canvas for redrawing 
+		this.context.clearRect(0, 0, this.canvas.width, this.canvas.height)	// Refreshes the canvas
+	}	
 }
-			
-function Entity(width, height, color, x, y) {
+
+// A function containing all the information about each entity within the canvas			
+function Entity(width, height, color, x, y) {	// Setting up the dimension rules
 	this.width = width;
 	this.height = height;
 	this.x = x;
@@ -62,73 +79,75 @@ function Entity(width, height, color, x, y) {
 		ctx = GameArea.context;
 		ctx.fillStyle = color;
 		ctx.fillRect(this.x, this.y, this.width, this.height);
-		this.relX = this.width/2+this.x;
-		this.relY = this.height/2+this.y;
+		this.relX = this.width/2+this.x;	// The middle x co-ordinate of each entity
+		this.relY = this.height/2+this.y;	// The middle y co-ordinate of each entity
 	}				
- 	this.crashWith = function(otherobj) {
-		var myleft = this.x;
-		var myright = this.x + (this.width);
-		var mytop = this.y;
-		var mybottom = this.y + (this.height);
-		var otherleft = otherobj.x;
-		var otherright = otherobj.x + (otherobj.width);
-		var othertop = otherobj.y;
-		var otherbottom = otherobj.y + (otherobj.height);
-		var crash = true;
-		if ((mybottom < othertop) ||
+ 	this.crashWith = function(otherobj) {	// Setting up the crash rule. This function's job is to ensure that the enemy doesn't go through the player
+		var myleft = this.x;	// Creating variables for each edge for later comparison. Player's left edge
+		var myright = this.x + (this.width);	// Player's right edge
+		var mytop = this.y;	// Player's top edge
+		var mybottom = this.y + (this.height);	// Player's bottom edge
+		var otherleft = otherobj.x;	// Enemy's left edge
+		var otherright = otherobj.x + (otherobj.width);	// Enemy's right edge
+		var othertop = otherobj.y;	// Enemy's top edge
+		var otherbottom = otherobj.y + (otherobj.height);	// Enemy's bottom edge
+		var crash = true;	// For use when the player does crash
+		if ((mybottom < othertop) || 	// Setting up the conditions for when a crash takes place
 		    (mytop > otherbottom) ||
-                    (myright < otherleft) ||
-                    (myleft > otherright)) {
-                	crash = false;
-                }
-                return crash;
+            (myright < otherleft) ||
+            (myleft > otherright)) {
+				crash = false;
+            }
+            return crash;	// The crash occuring
 	}            
 }
-				              
-var ThisFrame = 0;
-var Hypotenuse = 0;
-var EndFrame = 0;
+
+// Defining the mathematical variables				              
+var ThisFrame = 0; // The current frame
+var ElapsedTime = 0;	// The amount of time elapsed in seconds
+var EndFrame = 0;	// The last frame
 function updateGame() {
-	if (Enemy.crashWith(Gamer)) {
+	if (Enemy.crashWith(Gamer)) {	// Telling the program what happens when a 'crash' DOES occurs
 		window.cancelAnimationFrame(ThisFrame);
-		PlayerLives += -1;
-		if (PlayerLives <= 0) {
-			Lives.innerHTML = "Game Over :(";
+		PlayerLives += -1;	// A life is deduceted as a result of a crash
+		if (PlayerLives == 0) {	// However, if the player lands with 0 lives after crashing...
+			Lives.innerHTML = "Game Over :(";	// ... It is game over for the player
 		} 
 		else {
-			Lives.innerHTML = PlayerLives + " lives remaining"; 
-                        Restart(); 
-                }
+			Lives.innerHTML = PlayerLives + " lives remaining";	// Displays the number of lives remaining on screen
+            Restart();	// The game is restarted if the player does have a sufficient number of lives left
+        }
 	} 				  
-	else {
-		GameArea.clear();
-		if (GameArea.plrX && GameArea.plrY) {
-			Gamer.x = GameArea.plrX-(Gamer.width/2);
-                        Gamer.y = GameArea.plrY-(Gamer.height/2);    
+	else { // If a crash does NOT occur
+		GameArea.clear();	
+		if (GameArea.plrX && GameArea.plrY) { // The mouse co-ordinates are taken from the "event listener"
+			Gamer.x = GameArea.plrX-(Gamer.width/2);	// The player's x co-ordinate is set to be the player's mouse x co-ordinate minus the radius of his/her piece
+            Gamer.y = GameArea.plrY-(Gamer.height/2);   // The player's y co-ordinate is set to be the player's mouse y co-ordinate minus the radius of his/her piece 
 		}
-		newEnemyCoords = GetNewCoords(Enemy,Gamer,ThisFrame);
+		newEnemyCoords = GetNewCoords(Enemy,Gamer,ThisFrame);	// The enemy's co-ordinate system is set up similarly to the player (except without the mouse control)
 		Enemy.x += newEnemyCoords.x;
-		Enemy.y += newEnemyCoords.y;
-                    
+		Enemy.y += newEnemyCoords.y;  
+		
 		Gamer.update();
 		Enemy.update();
-		ThisFrame = window.requestAnimationFrame(updateGame); 
+		ThisFrame = window.requestAnimationFrame(updateGame);	// Allows the program to animate another frame at the next 'repaint'
 	}              
 }
-						
-function GetNewCoords(startObj,destinationObj,ThisFrame) {
-	var dx = destinationObj.relX - startObj.relX;
-	var dy = destinationObj.relY - startObj.relY;
-	var Distance = Math.sqrt(dx * dx + dy * dy);
+
+// A function which is responsible for the maths behind the enemy AI						
+function GetNewCoords(startObj,destinationObj,ThisFrame) {	
+	var dx = destinationObj.relX - startObj.relX;	// The x (width) of the hypotenuse
+	var dy = destinationObj.relY - startObj.relY;	// The y (hight) of the hypotenuse
+	var Distance = Math.sqrt(dx * dx + dy * dy);	// The shortest distance between the enemy's co-ordinates and the player's co-ordinates using Pythagoras' theorem
 	if (Distance) {
 		dx /= Distance;
 		dy /= Distance;
 	}       
-	Hypotenuse = ThisFrame - EndFrame;
+	ElapsedTime = ThisFrame - EndFrame;	// Time elapsed, 
 	EndFrame = ThisFrame;
-	var x = dx * Hypotenuse * 7;
-	var y = dy * Hypotenuse * 7;
-	return {x,y};
+	var x = dx * ElapsedTime * 7;	// Multiply the separating x-distance with the time elapsed and the speed of the action (7 in this case)
+	var y = dy * ElapsedTime * 7;	// Multiply the separating y-distance with the time elapsed and the speed of the action (Also 7 in this case)
+	return {x,y};	// Gets the enemy to move to the previously defined co-ordinates - This is the enemy AI in action
 }
 
 </script>
