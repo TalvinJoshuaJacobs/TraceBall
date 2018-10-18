@@ -13,8 +13,6 @@
 
         <script>
 		
-	    //Declaring the piece variables and setting them up
-		
             var Gamer;
             var Enemy;
             var PlayerLives = 4;
@@ -25,9 +23,7 @@
                 Gamer = new Entity(70, 70, "#55822B", 1000, 500);
                 Enemy = new Entity(70, 70, " #C70039", 240, 115);
             }
-			
-	    //Setting the starting positions for each element
-
+			    
             function Restart() {
                 GameArea.clear();
                 Gamer.x = 1000;
@@ -37,9 +33,7 @@
                 Gamer.update();
                 Enemy.update();
                 setTimeout(updateGame,450);
-            }
-			
-	    //Setting the canvas up
+            }    
 
             var GameArea = {
                 canvas : document.createElement("canvas"),
@@ -52,10 +46,8 @@
                     this.context = this.canvas.getContext("2d");
                     TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
                     window.requestAnimationFrame(updateGame);
-					
-		    //Hooking up the mouse to the program (addEventListener)
-					
-		    this.canvas.style.cursor = "none"; //Hides the mouse
+								
+		    this.canvas.style.cursor = "none"; 
                     this.canvas.addEventListener('mousemove', function (e) {
                         GameArea.plrX = e.offsetX;
                         GameArea.plrY = e.offsetY;
@@ -67,7 +59,6 @@
 		
             }
 
-	    //Setting up the the co-ordinate system
 			
             function Entity(width, height, color, x, y) {
                 this.width = width;
@@ -82,7 +73,7 @@
                     this.relY = this.height/2+this.y;
                 }
 
-		//Setting up the crash rule
+		
 				
                 this.crashWith = function(otherobj) {
                     var myleft = this.x;
@@ -116,13 +107,13 @@
                         Lives.innerHTML = "Game Over :(";
                     } 
 		    else {
-                        Lives.innerHTML = PlayerLives + " lives remaining"; //Displays the number of lives on the page
+                        Lives.innerHTML = PlayerLives + " lives remaining"; 
                         Restart(); 
                     }
 
                 } 
 				
-		    //Setting up the coordinate system
+		  
 
 		else {
                     GameArea.clear();
@@ -136,12 +127,12 @@
                     
                     Gamer.update();
                     Enemy.update();
-                    ThisFrame = window.requestAnimationFrame(updateGame); //Ensures my game isn't a rip-off of MS Paint
+                    ThisFrame = window.requestAnimationFrame(updateGame); 
                 }
                 
             }
 			
-	    //Setting up Pythagoras' theorem to work out the shortest distance between the Gamer (you) and the Enemy
+	    
 			
             function GetNewCoords(startObj,destinationObj,ThisFrame) {
                 var dx = destinationObj.relX - startObj.relX;
@@ -152,7 +143,7 @@
                     dy /= Distance;
                 }
 	
-	    //Enemy AI	    
+	        
 
                 Hypotenuse = ThisFrame - EndFrame;
                 EndFrame = ThisFrame;
@@ -160,12 +151,6 @@
                 var y = dy * Hypotenuse * 6.85;
                 return {x,y};
             }
-
-// HALL OF FAME:
-
-// @w3schools.com <3 (Helped me with the basic operations and structure of this code)
-// @EricVasile <3 (Helped me with the Math functions and player Lives)
-// @ManishGadhviWHC <3 (My programming tutor)
 
         </script>
 
