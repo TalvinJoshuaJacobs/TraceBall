@@ -61,7 +61,7 @@ var GameArea = {	// It is set up as a new variable
 		this.canvas.style.cursor = "none"; 	// Hides the mouse cursor
 		this.canvas.addEventListener('mousemove', function (e) {	// Gets the program to listen out for the mouse co-ordinates
 			GameArea.plrX = e.offsetX;	// Mouse's x co-ordinates
-            GameArea.plrY = e.offsetY;	// Mouse's y co-ordinates
+            		GameArea.plrY = e.offsetY;	// Mouse's y co-ordinates
 		})
 	},
 	clear : function(){	// A function to clear the canvas for redrawing 
@@ -94,9 +94,9 @@ function Entity(width, height, color, x, y) {	// Setting up the dimension rules
 		var crash = true;	// For use when the player does crash
 		if ((mybottom < othertop) || 	// Setting up the conditions for when a crash takes place
 		    (mytop > otherbottom) ||
-            (myright < otherleft) ||
-            (myleft > otherright)) {
-				crash = false;
+            	    (myright < otherleft) ||
+            	    (myleft > otherright)) {
+			crash = false;
             }
             return crash;	// The crash occuring
 	}            
@@ -115,14 +115,14 @@ function updateGame() {
 		} 
 		else {
 			Lives.innerHTML = PlayerLives + " lives remaining";	// Displays the number of lives remaining on screen
-            Restart();	// The game is restarted if the player does have a sufficient number of lives left
+            		Restart();	// The game is restarted if the player does have a sufficient number of lives left
         }
 	} 				  
 	else { // If a crash does NOT occur
 		GameArea.clear();	
 		if (GameArea.plrX && GameArea.plrY) { // The mouse co-ordinates are taken from the "event listener"
 			Gamer.x = GameArea.plrX-(Gamer.width/2);	// The player's x co-ordinate is set to be the player's mouse x co-ordinate minus the radius of his/her piece
-            Gamer.y = GameArea.plrY-(Gamer.height/2);   // The player's y co-ordinate is set to be the player's mouse y co-ordinate minus the radius of his/her piece 
+            		Gamer.y = GameArea.plrY-(Gamer.height/2);   // The player's y co-ordinate is set to be the player's mouse y co-ordinate minus the radius of his/her piece 
 		}
 		newEnemyCoords = GetNewCoords(Enemy,Gamer,ThisFrame);	// The enemy's co-ordinate system is set up similarly to the player (except without the mouse control)
 		Enemy.x += newEnemyCoords.x;
