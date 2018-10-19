@@ -1,5 +1,3 @@
-**West Herts College - *HND in Computing (Cyber Security)* ->  *Programming - Assignment 1*** By Talvin Jacobs (2018-2019)
-
 ## 'TraceBall'
 
 ### I. Initiative
@@ -13,7 +11,7 @@ Set inside a browser window, the user controls a small box connected to the mous
  - The user has to control his box by using the mouse only
  - The enemy is controlled by an AI which uses math functions (trigonometry) to work out the player's position
  - The game takes place inside a canvas 
- - The user has three lives. They lose a life if the enemy box touches the user's box. If they lose all of their lives,       the user loses the game
+ - The user has three lives. They lose a life if the enemy box touches the user's box. If they lose all of their lives, the user loses the game
 
 
 ##### Non-Functional Requirements
@@ -21,21 +19,25 @@ Set inside a browser window, the user controls a small box connected to the mous
  - The user controls a green box 
  - The enemy AI controls a red box
  - The boxes are of the same size
- - The speed of the enemy AI is balanced (so the game isn't too difficult, but also not too easy)
+ - The speed of the enemy AI is balanced (so the game is not too difficult, but also not too easy)
  - The number of lives is displayed below the canvas
  - The title of the game is displayed above the canvas in a clear, bold font
 
 ##### User Stories
 
-"As a player,  I would like the enemy AI to follow my box more smoothly, for a better and more enjoyable gaming experience."
-"It would be nice for the canvas to appear in the middle of the page, where my eyes would normally rest."
-"As a player, I would love to see how many lives I have left during gameplay."
+ - "As a player, I want to clearly see the game area, my box and the enemy box."
+ - "As a player, I want my mouse to be hidden when playing."
+ - "As a player, I would like the game to stop and restart when I come into contact with the enemy."
+ - "As a player, I will need to see the enemy follow my box in the most efficient (and balanced) way possible."
+ - "As a player, I would like the enemy AI to follow my box more smoothly, for a more enjoyable gaming experience." 
+ - "It would be nice for the canvas to appear in the middle of the page, where my eyes would normally rest."
+ - "It would be great to have a score function which goes up as time goes by while being alive."
+ -  "As a player, I would love to see how many lives I have left during game-play."
 
 
 ##### How We Addressed The Requirements
 
-My game has had a life-score and a smoother AI implemented, as well as a nicer, more pleasant looking canvas.
-The life-score function and the smoother AI were both implemented with the help of a fellow student (Eric Vasile). The canvas was completed by myself.
+A plan was devised so that all the functional requirements would be completed with the highest priority, followed by the non-functional requirements.
 
 ### III. Genre
 Simple 2D browser game
@@ -43,170 +45,161 @@ Simple 2D browser game
 ### IV. Technical Details
 
 ##### Platform
-HTML Browser platform
+This project was coded entirely in Notepad (the default text application that comes with windows). This means I did not use an IDE for the program.
 
 ##### Programming Language/Enviroment
 Javascript and HTML
 
 ##### Programming Challenges
-I had to overcome numerous challenges:
+Numerous challenges had to be overcome:
 
  - Not having any previous experience or knowledge with Javascript
- - Working with Notepad (Default windows text editor application, which isn't a feature-rich IDE)
+ - Working with Notepad (Default windows text writing application, which is not a feature-rich IDE)
  - Having to code the Enemy AI (working out which way was best to code it)
  - Making the game appear more tidy (visually)
  - Implementing the '3 lives' rule 
  - Coding the crash rule (Making sure the game stops and a life is lost when the user's box touches the enemy box)
 
-##### Constructing And Implementing My Code
+##### Construction and Implementation of the Code
 
-To begin, I went to https://www.w3schools.com/graphics/game_intro.asp and learned the basics of Javascript and how it functions. I then looked at the example game and learnt what each part of the code was responsible for (By going through the code, deleting some lines, and comparing it with the full final result).
-Then, I navigated to the sections of the website which highlighted the different functions of the game and wrote my code with that as a reference.
-Each 'chunk' of my code was written by referring to different parts of the w3schools website.
-I then hit a brick wall. I wasn't able to code the 'Enemy AI' to get it to chase the user's box. I spent a few days trying to figure out how to code it, and ended up referring to a classmate's (Eric Vasile) piece of code to get it completed.
+To begin with, https://www.w3schools.com/graphics/game_intro.asp was visited and the basics of Javascript and how it functions were learnt. The example game was studied for what each part of the code was responsible for (By going through the code, deleting some lines, and comparing it with the full final result).
+Then, different sections of the website which highlighted the different functions of the game were visited and the code was written with that as a reference.
+Each 'chunk' of the code was written by referring to different parts of the w3schools website.
+Then an issue arised. Attempting to code the 'Enemy AI' was a huge struggle, as well as getting it to chase the user's box. A few days were spent trying to figure out how to code it, but eventually a classmate's (Eric Vasile) piece of code was referred to to get it completed.
 
 ##### Algorithms
 
-The algorithm found in my code is responsible for the Enemy AI, getting it to chase the user's box in the most efficient way possible. This was done by getting the Enemy to do 2 things: 1) Calculate the shortest distance between it and the user, and 2) Follow that path linearly, at a constant speed. To get it to calculate this 'shortest distance', I've implemented Pythagoras' theorem using the Math function and the coordinates of the user's mouse. 
+An algorithm in the code is responsible for the Enemy AI, getting it to chase the user's box in the most efficient way possible. This was done by getting the Enemy to do 2 things: 1) Calculate the shortest distance between it and the user, and 2) Follow that path linearly, at a constant speed. To get it to calculate this 'shortest distance', Pythagoras' theorem was implemented using mathematical functions and the coordinates of the user's mouse. 
+
+Another algorithm is responsible for the life system. Since the player only has 3 lives, it is essential that this is done properly, as it is the central part of the game. First, a variable needed to be created for the number of lives the player has. Then, the rule that 'if the enemy box touches the user's box, a life is deducted' was implemented. There will always be a point in time when the enemy box does touch the user's box, so after that, a life will be deducted ONLY IF the user has more than one life remaining, otherwise, the game is over.
  
 ##### Coding Standards 
-I've stuck to the following when writing the code:
+The following coding standards were adhered to when completing the code:
 
  - The variable names and cases are consistent
  - The spacing, indentation, comments and brackets are consistent
  - The code is readable
 
-I've stuck to placing the opening bracket on the same line as the object name, and also made sure each line generally wasn't longer than 100 characters.
-The format of the code on GitHub will look slightly different to when it is pasted in Notepad or an appropriate IDE - The indentation will appear inconsistent, however this doesn't change the structure or affect the functionality of the code.
+The opening brackets remain on the same line as the object name, and also each line generally is not longer than 100 characters (except for the comments).
+The format of the code on GitHub will look slightly different to when it is pasted in Notepad or an appropriate IDE - The indentation will appear inconsistent, however this does not change the structure or affect the functionality of the code.
 
-I have not used camelCase, but instead, stuck to Capitalized variable names. They are all consistent with this case.
+camelCase was not used, but instead Capitalized variable names were. They are all consistent with this case.
 
 ### V. Research
-I used https://www.w3schools.com for my research before completing this task.
+https://www.w3schools.com was used as a source before completing this task.
 
 ### VI. Project Management
 
 ##### Burndown Chart
 
-![My Burndown Chart](http://i.imgur.com/wQpg17yg.jpg)
+![Burndown Chart](http://i.imgur.com/wQpg17yg.jpg)
 
-This chart shows the completion of each individual 'chunk' of code over time. (This chart shows that I was slightly ahead of schedule for the majority of the task)
+
 
 ##### User Stories Tracking Chart (Which Stories Have Been Completed)
 
 ![enter image description here](https://i.imgur.com/kEawMv3.jpg)
 ##### Flowchart
 
-![My flowchart](http://i.imgur.com/cT43un3.jpg)
+![My flowchart](https://i.imgur.com/o2Pzegi.jpg)
 
 ##### Functions
 
  - "Get the player to control the box using the mouse":  Using `this.canvas.addEventListener('mousemove', function (e) {` , the player's mouse movement is recorded and the player's box element is placed exactly where the cursor is.
  - "The user has 3 lives":  This is a rule that is implemented as a functional requirement.
  - "Get the co-ordinates of the player's mouse for each frame": The user's cursor position will be constantly moving to a different position on the canvas. This needs to be tracked, for use of the enemy AI.
- - "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates": The shortest "line" between two points can be calculated by using Pythagoras' theorem (a^2 + b^2 = c^2). This is the invisible line that the enemy will always traverse when chasing the player. (It's the most efficient way for the enemy to do so).
- - "Continue until the player DOES touch the enemy": If the enemy's box hasn't yet touched the player's box, the game can still continue until it happens. It must happen as the game cannot go on forever! (Humans don't live forever)
+ - "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates": The shortest "line" between two points can be calculated by using Pythagoras' theorem (a^2 + b^2 = c^2). This is the invisible line that the enemy will always traverse when chasing the player. (It is the most efficient way for the enemy to do so).
+ - "Continue until the player DOES touch the enemy": If the enemy's box has not yet touched the player's box, the game can still continue until it happens. It must happen as the game cannot go on forever! (Humans do not live forever)
  - "Deduct 1 life": This occurs when the player has touched the enemy box, AND has more than 1 life left. 
  - "Pause for 450 milliseconds": This is to give the player a little break and to clarify that the next "round" will begin after the pause.  `setTimeout(updateGame,450);`
  
 ##### Flowchart -> Code
 
-> "Display the player's box, the enemy's box and the canvas"
+> "Display the player's box, the enemy's box and the canvas":
 
-    var GameArea = { 						//Displays Canvas
-	    canvas : document.createElement("canvas"),
+    var Gamer; // The player
+    var Enemy; // The enemy
+    
+    function Start() { // 2 entities are created when the game begins:
+	    GameArea.start();
+	    Gamer = new Entity(70, 70, "#55822B", 1000, 500); // The player's box and its characteristics
+	    Enemy = new Entity(70, 70, " #C70039", 240, 115); // The enemy's box and its (similar) characteristics
+    }
+
+    // The setting up of the Canvas (Area where the game takes place - The "Map")
+    var GameArea = { // It is set up as a new variable
+	    canvas : document.createElement("canvas"), // The canvas element is created
 	    start : function() {
-		    var TheCanvas = document.getElementById("Space");
+		    var TheCanvas = document.getElementById("Space"); // Another DOM grabber
 		    this.canvas.width = TheCanvas.width;
 		    this.canvas.height = TheCanvas.height;
-		    this.canvas.style = "border:20px solid #000000";
-		    this.canvas.style = "background-color: #D5D5D5";
+		    this.canvas.style = "border: 20px solid #000000"; // Canvas style and size
+		    this.canvas.style = "background-color: #D5D5D5"; // ^
 		    this.context = this.canvas.getContext("2d");
-		    TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas);
-		    window.requestAnimationFrame(updateGame);
-		    
-    var Gamer;							//Created the Player
-    var Enemy;							//Created the Enemy
-    
-    function Start() {
-    GameArea.start();
-	    Gamer = new Entity(70, 70, "#55822B", 1000, 500);		//Player's attributes
-	    Enemy = new Entity(70, 70, " #C70039", 240, 115);		//Enemy's attributes
-    }
-
-> Get the player to control the box using mouse
-
-    this.canvas.style.cursor = "none"; 				//Hides the mouse
-    this.canvas.addEventListener('mousemove', function (e) { 	//Getting mouse movement
-	    GameArea.plrX = e.offsetX;
-	    GameArea.plrY = e.offsetY;
-	    })
+		    TheCanvas.parentNode.replaceChild(this.canvas, TheCanvas); // Overwriting the canvas info
+		    window.requestAnimationFrame(updateGame); // Creates the animation in Javascript
     },
 
-> The user has 3 lives
+> "Get the player to control the box using mouse":
 
-    var PlayerLives = 4;						//Starting number
-    var Lives = document.getElementById("Lives");
+    this.canvas.style.cursor = "none"; // Hides the mouse cursor
+
+    this.canvas.addEventListener('mousemove', function (e) { // Gets the program to listen out for the mouse co-ordinates
+	    GameArea.plrX = e.offsetX; // Mouse's x co-ordinates
+	    GameArea.plrY = e.offsetY; // Mouse's y co-ordinates
+    })
+
+> "The user has 3 lives" (And what happens to the player if a life is lost):
+
+    var PlayerLives = 4; // Number of Lives the player begins with
+    var Lives = document.getElementById("Lives"); // A Document Object Model (DOM) grabber
     
     function updateGame() {
-	    if (Enemy.crashWith(Gamer)) {
+	    if (Enemy.crashWith(Gamer)) { // Telling the program what happens when a 'crash' DOES occurs
 		    window.cancelAnimationFrame(ThisFrame);
-		    PlayerLives += -1; 					//Player loses life if crash = true
-		    if (PlayerLives <= 0) {
-			    Lives.innerHTML = "Game Over :(";
+		    PlayerLives += -1; // A life is deducted as a result of a crash
+		    if (PlayerLives == 0) { // However, if the player lands with 0 lives after crashing...
+			    Lives.innerHTML = "Game Over :("; // ... It is game over for the player
 		    }
 		    else {
-			    Lives.innerHTML = PlayerLives + " lives remaining"; //Displays the number of lives on the page
-			    Restart();
-		    }
-
-> Get the co-ordinates of the player's mouse for each frame 
-
-    function Restart() {
-	    GameArea.clear();
-	    Gamer.x = 1000;
-	    Gamer.y = 500;
-    }
-
-
-    function Entity(width, height, color, x, y) {
-	    this.width = width;
-	    this.height = height;
-	    this.x = x;
-	    this.y = y;
-	    this.update = function() {
-		    ctx = GameArea.context;
-		    ctx.fillStyle = color;
-		    ctx.fillRect(this.x, this.y, this.width, this.height);
-		    this.relX = this.width/2+this.x;
-		    this.relY = this.height/2+this.y;
+			    Lives.innerHTML = PlayerLives + " lives remaining"; // Displays the number of lives remaining on screen
+			    Restart(); // The game is restarted if the player does have a sufficient number of lives left
 	    }
     }
 
-> Calculate the shortest distance between the enemy box and the player's mouse co-ordinates
+> "Get the co-ordinates of the player's mouse for each frame":
+
+    this.canvas.addEventListener('mousemove', function (e) { // Gets the program to listen out for the mouse co-ordinates
+	    GameArea.plrX = e.offsetX; // Mouse's x co-ordinates
+	    GameArea.plrY = e.offsetY; // Mouse's y co-ordinates
+    })
 
     function GetNewCoords(startObj,destinationObj,ThisFrame) {
-	    var dx = destinationObj.relX - startObj.relX;
-	    var dy = destinationObj.relY - startObj.relY;
-	    var Distance = Math.sqrt(dx * dx + dy * dy);
-	    if (Distance) {
-		    dx /= Distance;
-		    dy /= Distance;
-	    }
+	    var dx = destinationObj.relX - startObj.relX; // The x (width) of the hypotenuse
+	    var dy = destinationObj.relY - startObj.relY; // The y (hight) of the hypotenuse
+    }
 
-> Get the enemy box to traverse this "shortest distance"
+> "Calculate the shortest distance between the enemy box and the player's mouse co-ordinates":
+
+    function GetNewCoords(startObj,destinationObj,ThisFrame) {
+	    var Distance = Math.sqrt(dx * dx + dy * dy); // The shortest distance between the enemy's co-ordinates and the player's co-ordinates using Pythagoras' theorem
+	    if (Distance) {
+	    dx /= Distance;
+	    dy /= Distance;
+    }
+
+> "Get the enemy box to traverse this "shortest distance":
 	  
-    Hypotenuse = ThisFrame - EndFrame;
-    EndFrame = ThisFrame;
-    var x = dx * Hypotenuse * 6.85;
-    var y = dy * Hypotenuse * 6.85;
-    return {x,y};
+    function GetNewCoords(startObj,destinationObj,ThisFrame) {
+	    ElapsedTime = ThisFrame - EndFrame; // Time elapsed,
+	    EndFrame = ThisFrame;
+	    var x = dx * ElapsedTime * 7; // Multiply the separating x-distance with the time elapsed and the speed of the action (7 in this case)
+	    var y = dy * ElapsedTime * 7; // Multiply the separating y-distance with the time elapsed and the speed of the action (Also 7 in this case)
+	    return {x,y}; // Gets the enemy to move to the previously defined co-ordinates - This is the enemy AI in action
     }
 > 
 > Pause for 450 milliseconds
 
-	    Gamer.update();
-	    Enemy.update();
-	    setTimeout(updateGame,450);
-    }
+	    setTimeout(updateGame,450); // The time delay between the player's death and the start of the new life
+
 
