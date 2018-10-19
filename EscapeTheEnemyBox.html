@@ -109,7 +109,7 @@ var EndFrame = 0;	// The last frame
 function updateGame() {
 	if (Enemy.crashWith(Gamer)) {	// Telling the program what happens when a 'crash' DOES occurs
 		window.cancelAnimationFrame(ThisFrame);
-		PlayerLives += -1;	// A life is deduceted as a result of a crash
+		PlayerLives += -1;	// A life is deducted as a result of a crash
 		if (PlayerLives == 0) {	// However, if the player lands with 0 lives after crashing...
 			Lives.innerHTML = "Game Over :(";	// ... It is game over for the player
 		} 
