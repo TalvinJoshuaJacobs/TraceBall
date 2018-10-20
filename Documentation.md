@@ -7,7 +7,7 @@ Set inside a browser window, the user controls a small box connected to the mous
 
 ##### Epics
 
- - The game is coded in Javascript and HTML and on Notepad only
+ - [The game is coded in Javascript and HTML and on Notepad only]
  - The user has to control his box by using the mouse only
  - The enemy is controlled by an AI which uses math functions (trigonometry) to work out the player's position
  - The game takes place inside a canvas 
@@ -26,6 +26,7 @@ Set inside a browser window, the user controls a small box connected to the mous
 ##### User Stories
 
  - "As a player, I want to clearly see the game area, my box and the enemy box."
+ - "As a player, I would like to control my box using the mouse."
  - "As a player, I want my mouse to be hidden when playing."
  - "As a player, I would like the game to stop and restart when I come into contact with the enemy."
  - "As a player, I will need to see the enemy follow my box in the most efficient (and balanced) way possible."
@@ -47,7 +48,7 @@ Simple 2D browser game
 ##### Platform
 This project was coded entirely in Notepad (the default text application that comes with windows). This means I did not use an IDE for the program.
 
-##### Programming Language/Enviroment
+##### Programming Language/Environment
 Javascript and HTML
 
 ##### Programming Challenges
@@ -92,13 +93,15 @@ https://www.w3schools.com was used as a source before completing this task.
 
 ##### Burndown Chart
 
-![Burndown Chart](http://i.imgur.com/wQpg17yg.jpg)
+![Burndown Chart](https://i.imgur.com/NClfVB0.jpg)
 
 
 
-##### User Stories Tracking Chart (Which Stories Have Been Completed)
+##### User Stories Tracking Chart
 
-![enter image description here](https://i.imgur.com/kEawMv3.jpg)
+![enter image description here](https://i.imgur.com/QlrS06J.jpg)
+Apart from the last user story (implementing a score function), all of them have been completed. The blue line indicates the number of hours allocated and required to complete the user story, while the red line shows how many hours were *actually* spent.
+
 ##### Flowchart
 
 ![My flowchart](https://i.imgur.com/o2Pzegi.jpg)
@@ -200,6 +203,15 @@ https://www.w3schools.com was used as a source before completing this task.
 > 
 > Pause for 450 milliseconds
 
-	    setTimeout(updateGame,450); // The time delay between the player's death and the start of the new life
+    setTimeout(updateGame,450); // The time delay between the player's death and the start of the new life
 
+### VII. Evaluation
+
+I have managed to complete all of the functional requirements within the 2 week deadline with no previous knowledge or experience with HTML and Javascript. This happened because I managed my time efficiently and referred to the right sources for assistance. I realized that once I had the logic of the problem figured out, the most difficult part of the project was over, since I only had to follow up with the correct syntax which could easily be learnt online.
+
+There are many other functions that could be added to the game, for example a score function and a leaderboard, however, these are all non-functional, quality-of-life additions and are not necessarily required to make the game work.
+
+This program was created entirely in Notepad. This was a real challenge for me, because not only did I have zero experience in Javascript, but Notepad doesn't colour code or recognise syntax like an Integrated Development Environment (IDE) would. But with regular testing, I was able to quickly figure out how to approach the coding.
+
+Next time, to be more consistent with my coding standards, I will use camelCase to label my variables. In this task I used standard capitalized names, which could have easily been mistaken for another function or bit of syntax. 
 
