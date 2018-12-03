@@ -75,9 +75,9 @@ An algorithm in the code is responsible for the Enemy AI, getting it to chase th
 Another algorithm is responsible for the life system. Since the player only has 3 lives, it is essential that this is done properly, as it is the central part of the game. First, a variable needed to be created for the number of lives the player has. Then, the rule that 'if the enemy box touches the user's box, a life is deducted' was implemented. There will always be a point in time when the enemy box does touch the user's box, so after that, a life will be deducted ONLY IF the user has more than one life remaining, otherwise, the game is over.
  
 ##### Coding Standards 
-The following coding standards were consistently adhered to when completing the code:
+The following coding standards are consistently adhered to when completing code:
 
-***Variables:*** Every variable name starts with a capital letter. No camelCase was used. For example: `var Lives =  document.getElementById("Lives");`
+***Variables:*** Every variable name starts with a capital letter. No camelCase is used. For example: `var Lives =  document.getElementById("Lives");`
 
 ***Curled Parentheses:*** Curled parentheses start on the same line as the code after a single space, and they end on a new line immediately after the last line of the chunk of code that the parentheses are opened in. For example: `start : function() {` ending with `}` on a new line.
 
@@ -223,4 +223,3 @@ There are many other functions that could be added to the game, for example a sc
 This program was created entirely in Notepad. This was a real challenge for me, because not only did I have zero experience in Javascript, but Notepad doesn't colour code or recognise syntax like an Integrated Development Environment (IDE) would. But with regular testing, I was able to quickly figure out how to approach the coding.
 
 Next time, to be more consistent with my coding standards, I will use camelCase to label my variables. In this task I used standard capitalized names, which could have easily been mistaken for another function or bit of syntax. 
-
