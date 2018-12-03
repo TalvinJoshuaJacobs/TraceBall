@@ -75,16 +75,25 @@ An algorithm in the code is responsible for the Enemy AI, getting it to chase th
 Another algorithm is responsible for the life system. Since the player only has 3 lives, it is essential that this is done properly, as it is the central part of the game. First, a variable needed to be created for the number of lives the player has. Then, the rule that 'if the enemy box touches the user's box, a life is deducted' was implemented. There will always be a point in time when the enemy box does touch the user's box, so after that, a life will be deducted ONLY IF the user has more than one life remaining, otherwise, the game is over.
  
 ##### Coding Standards 
-The following coding standards were adhered to when completing the code:
+The following coding standards were consistently adhered to when completing the code:
 
- - The variable names and cases are consistent
- - The spacing, indentation, comments and brackets are consistent
- - The code is readable
+***Variables:*** Every variable name starts with a capital letter. No camelCase was used. For example: `var Lives =  document.getElementById("Lives");`
 
-The opening brackets remain on the same line as the object name, and also each line generally is not longer than 100 characters (except for the comments).
-The format of the code on GitHub will look slightly different to when it is pasted in Notepad or an appropriate IDE - The indentation will appear inconsistent, however this does not change the structure or affect the functionality of the code.
+***Curled Parentheses:*** Curled parentheses start on the same line as the code after a single space, and they end on a new line immediately after the last line of the chunk of code that the parentheses are opened in. For example: `start : function() {` ending with `}` on a new line.
 
-camelCase was not used, but instead Capitalized variable names were. They are all consistent with this case.
+***Indentation:*** Every line that is indented has been done as a result of following an opening curled parenthesis. For example: 
+
+    this.update = function() {
+	    ctx = GameArea.context;
+
+***Spacing:*** Every special ASCII character in the code : = + - /   { } apart from opening and closing curved brackets, full-stops and semi-colons exists sandwiched by a space on either side. For example: `this.height = height;`
+
+***Comments:***
+
+ - *For variables:* The comments begin a single tab-space after the last letter of the line that defines the variable. They comments themselves are brief, simple sentences which outline what the variable is eg. `Gamer.x = 1000; // The x co-ordinate of the player's starting position` 
+ - *For the introduction:* The introduction is written in full English sentences that make grammatical sense. Sentence example: `// TraceBall (EscapeTheEnemyBox) is a 2D browser game coded in Javascript.`
+ - *For functions:* As with variables, the comments begin a single tab-space after the last letter of the line that defines the function. These comments are also brief and the sentences are not in full. Example: `// A "Restart Game" function.`
+ - *For "chunks of code":* A comment is made one line before the chunk of code, and one line gap further from the previous chunk (which may end with a closed curly parenthesis or a semicolon). The sentence explaining the chunk of code will be of more detail than a short sentence that describes a function or variable, but of slightly less detail than the introduction. Example: `// Defining the mathematical variables`
 
 ### V. Research
 https://www.w3schools.com was used as a source before completing this task.
